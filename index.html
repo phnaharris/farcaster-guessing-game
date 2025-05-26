@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="fc:frame"
+        content='{"version":"next",,"button":{"title":"🚩Start","action":{"type":"launch_frame","name":"Guessing Game!","url":"https://farcaster-guessing-game.vercel.app"}}}' />
+    <title>Guess the Number Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Guess the Number</h1>
+    <p>Guess a number between 1 and 100</p>
+    <input type="number" id="guess" min="1" max="100" />
+    <button onclick="checkGuess()">Submit Guess</button>
+    <p id="feedback"></p>
+
+    <script>
+        const secretNumber = Math.floor(Math.random() * 100) + 1;
+
+        function checkGuess() {
+            const userGuess = parseInt(document.getElementById('guess').value);
+            const feedback = document.getElementById('feedback');
+
+            if (userGuess < secretNumber) {
+                feedback.textContent = 'Too low! Try again.';
+            } else if (userGuess > secretNumber) {
+                feedback.textContent = 'Too high! Try again.';
+            } else {
+                feedback.textContent = 'Congratulations! You guessed it!';
+            }
+        }
+    </script>
+</body>
+
+</html>
